@@ -1,0 +1,21 @@
+/* styles/tailwind.css */
+/* Tailwind directives — gunakan file ini jika kamu ingin memisahkan
+   direktif dari globals.css. Saat ini globals.css sudah memuat @tailwind,
+   jadi file ini tidak wajib di-import. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: tempatkan layer tambahan di sini jika nanti ingin
+   memindahkan utilities dari globals.css
+@layer components {
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-sm font-medium transition; }
+  .card { @apply rounded-2xl border border-white/10 bg-white/5 shadow-lg; }
+}
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .gradient-brand {
+    background-image: linear-gradient(90deg, rgb(67 56 202), rgb(236 72 153));
+  }
+}
+*/

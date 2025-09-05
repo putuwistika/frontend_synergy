@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base (variables, resets, a11y) ===== */
+@layer base {
+  :root {
+    /* Brand & palette */
+    --bg: #13247a; /* base background */
+    --text: 255 255 255;
+
+    --brand-start: 67 56 202;   /* #4338CA */
+    --brand-end: 99 102 241;    /* #6366F1 */
+    --accent-start: 236 72 153; /* #EC4899 */
+    --accent-end: 244 114 182;  /* #F472B6 */
+
+    --success: 16 185 129;      /* #10B981 */
+    --warning: 245 158 11;      /* #F59E0B */
+    --error: 244 63 94;         /* #F43F5E */
+
+    --surface: 255 255 255 / 0.05;
+    --ring: 255 255 255 / 0.20;
+  }
+
+  .dark {
+    --bg: #0e1b5e;
+    --surface: 255 255 255 / 0.06;
+    --ring: 255 255 255 / 0.25;
+  }
+
+  html, body, #__next {
+    height: 100%;
+  }
+
+  /* Font (uses Inter var set in layout) */
+  :root {
+    --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+      "Apple Color Emoji", "Segoe UI Emoji";
+  }
+  body {
+    @apply antialiased;
+    font-family: var(--font-sans);
+    background-color: var(--bg);
+    color: rgb(var(--text));
+    font-feature-settings: "liga" 1, "kern" 1;
+    font-variation-settings: normal;
+  }
+
+  ::selection {
+    background-color: rgb(var(--accent-end) / 0.4);
+    color: white;
+  }
+
+  /* Scrollbar (webkit) */
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgb(var(--brand-start)), rgb(var(--accent-start)));
+    border-radius: 9999px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* ===== Components (reusable patterns) ===== */
+@layer components {
+  .container-7xl { @apply mx-auto max-w-7xl px-6; }
+
+  .card       { @apply rounded-2xl border border-white/10 bg-white/5 shadow-lg; }
+  .glass      { @apply border border-white/10 bg-white/5 backdrop-blur; }
+
+  .btn        { @apply inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-sm font-medium transition; }
+  .btn-ghost  { @apply border border-white/20 bg-white/10 text-white hover:bg-white/15; }
+  .btn-gradient {
+    background-image: linear-gradient(90deg, rgb(var(--brand-start)), rgb(var(--accent-start)));
+    @apply text-white shadow-lg hover:brightness-110;
+  }
+
+  .focus-ring { box-shadow: 0 0 0 3px rgba(255,255,255,0.25); }
+}
+
+/* ===== Utilities (helpers, animations) ===== */
+@layer utilities {
+  .gradient-brand {
+    background-image: linear-gradient(90deg, rgb(var(--brand-start)), rgb(var(--accent-start)));
+  }
+  .text-gradient-brand {
+    background-image: linear-gradient(90deg, rgb(var(--brand-start)), rgb(var(--accent-start)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Skeleton shimmer */
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.06);
+  }
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 1.2s infinite;
+  }
+  @keyframes shimmer { 100% { transform: translateX(100%); } }
+
+  /* Float animation */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
+  }
+  .animate-float-slow { animation: float 6s ease-in-out infinite; }
+  .animate-float     { animation: float 3.5s ease-in-out infinite; }
+
+  /* Elevation shortcuts */
+  .shadow-soft { box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+}
