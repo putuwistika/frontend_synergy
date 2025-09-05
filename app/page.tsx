@@ -123,12 +123,12 @@ export default function HomePage() {
               >
                 Launch Forecasts
               </Link>
-              <Link
+              <a
                 href="#features"
                 className="inline-flex items-center justify-center rounded-2xl border border-white/20 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
               >
                 Learn More
-              </Link>
+              </a>
             </div>
 
             {/* Stats */}
