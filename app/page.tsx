@@ -42,10 +42,10 @@ const features = [
 ];
 
 const stats = [
-  { k: "Forecasts", v: "12,408" },
-  { k: "Avg Accuracy", v: "93.1%" },
-  { k: "Active Models", v: "7" },
-  { k: "Data Points", v: "1.2M+" },
+  { k: "MASE", v: "146" },
+  { k: "MAPE", v: "7.8%" },
+  { k: "Active Models", v: "1" },
+  { k: "Data Train", v: "1.2M+" },
 ];
 
 export default function HomePage() {
